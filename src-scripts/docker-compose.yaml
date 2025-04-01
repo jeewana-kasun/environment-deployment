@@ -1,0 +1,27 @@
+version: "3.3"
+
+volumes:
+ datafiles:
+
+services:
+ db:
+  build:
+   context: ../src-projects/database
+   dockerfile: Dockerfile
+  volumes:
+    - datafiles:/var/lib/mysql
+  restart: always
+  environment:
+    MYSQL_ROOT_PASSWORD: 1234
+ mvc:
+  build:
+   context: ../src-projects/backend
+   dockerfile: Dockerfile
+  depends_on:
+   - db
+  ports:
+   - "8888:80"
+  restart: always
+  environment:
+    - DBHOST=db
+    - ASPNETCORE_ENVIRONMENT=Development
