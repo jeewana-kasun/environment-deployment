@@ -107,10 +107,8 @@ echo "============================="
 echo "[START] Run Docker Compose..."
 echo "============================="
 
-# Go into new repository folder
-echo "Please enter your repo Name:"
-read repoName
-cd $repoName
+# Go into new repository script folder
+cd src-scripts
 
 # Run docker compose
 sudo docker compose up -d
