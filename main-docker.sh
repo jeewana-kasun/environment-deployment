@@ -67,7 +67,7 @@ sleep 20
 if systemctl is-active --quiet docker; then
     echo "Docker is running"
 else
-    echo "Docker is not running"
+    sudo systemctl start docker
 fi
 
 # Run Docker as a Non-root User (Optional)
@@ -78,6 +78,7 @@ echo "[FINISH] Install docker..."
 echo "============================="
 echo "                "
 
+echo "backendType : $backendType"
 
 if [ "$backendType" = "dotnet" ]; then
 
@@ -87,7 +88,7 @@ if [ "$backendType" = "dotnet" ]; then
 
     sh src-scripts/dotnet/dotnet.sh
 
-elif [ "$backendType" = "p" ]; then
+elif [ "$backendType" = "python" ]; then
 
     echo "!|!|!|!|!|!|!|!|!|!|!|!|!|!|!"
     echo "Docker execution with is not yet implemented"
