@@ -1,6 +1,5 @@
 
 backendType = $1
-echo "value from main script : $1"
 
 
 echo "============================="
@@ -52,10 +51,17 @@ sudo apt install docker-ce -y -qq
 # Wait for 60 seconds
 sleep 30
 
-sudo systemctl start docker
-sleep 10
-
 # Check if docker is active and run the rest of the script
+if systemctl is-active --quiet docker; then
+    echo "Docker is running"
+else
+    # Start and Enable Docker Service
+    sudo systemctl stop docker
+    sleep 10
+    sudo systemctl start docker
+fi
+
+sleep 20
 
 if systemctl is-active --quiet docker; then
     echo "Docker is running"
