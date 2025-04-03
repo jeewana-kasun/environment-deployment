@@ -62,13 +62,19 @@ echo "[FINISH] Install docker..."
 echo "============================="
 echo "                "
 
+docker image ls
+
+docker ps
+
+echo "backendType : $backendType"
+
 if [ "$backendType" = "d" ]; then
 
     echo "!|!|!|!|!|!|!|!|!|!|!|!|!|!|!"
     echo "Starting Docker execution with .Net backend project"
     echo "!|!|!|!|!|!|!|!|!|!|!|!|!|!|!"
 
-    sh src-scripts/
+    sh src-scripts/dotnet/dotnet.sh
 
 elif [ "$backendType" = "p" ]; then
 
