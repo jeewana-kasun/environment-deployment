@@ -55,6 +55,8 @@ sleep 30
 sudo systemctl start docker
 sudo systemctl enable docker
 
+sleep 10
+
 # Check if docker is active and run the rest of the script
 if systemctl is-active --quiet docker; then
     echo "Docker is running"
@@ -71,7 +73,7 @@ echo "============================="
 echo "                "
 
 
-if [ "$backendType" = "d" ]; then
+if [ "$backendType" = "dotnet" ]; then
 
     echo "!|!|!|!|!|!|!|!|!|!|!|!|!|!|!"
     echo "Starting Docker execution with .Net backend project"
