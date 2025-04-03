@@ -49,7 +49,7 @@ sudo apt update -y -qq
 sudo apt install docker-ce -y -qq
 
 # Wait for 60 seconds
-sleep 30
+sleep 10
 
 # Start and Enable Docker Service
 sudo systemctl start docker
@@ -62,6 +62,9 @@ if systemctl is-active --quiet docker; then
     echo "Docker is running"
 else
     echo "Docker is not running"
+    sudo systemctl start docker
+    sudo systemctl enable docker
+    echo systemctl is-active --quiet docker
 fi
 
 # Run Docker as a Non-root User (Optional)
