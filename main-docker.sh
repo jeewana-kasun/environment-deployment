@@ -57,14 +57,14 @@ sleep 10
 sudo systemctl enable docker
 sleep 10
 
+sudo systemctl start docker
+sudo systemctl enable docker
+
 # Check if docker is active and run the rest of the script
 if systemctl is-active --quiet docker; then
     echo "Docker is running"
 else
     echo "Docker is not running"
-    sudo systemctl start docker
-    sudo systemctl enable docker
-    echo systemctl is-active --quiet docker
 fi
 
 # Run Docker as a Non-root User (Optional)
