@@ -62,10 +62,6 @@ echo "[FINISH] Install docker..."
 echo "============================="
 echo "                "
 
-docker image ls
-
-docker ps
-
 echo "backendType : $backendType"
 
 if [ "$backendType" = "d" ]; then
