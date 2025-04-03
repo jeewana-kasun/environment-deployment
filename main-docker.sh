@@ -52,7 +52,7 @@ sudo systemctl start docker
 sudo systemctl enable docker
 
 # Check Docker service status
-sudo systemctl status docker &
+sudo systemctl status docker
 
 # Run Docker as a Non-root User (Optional)
 sudo usermod -aG docker $USER
