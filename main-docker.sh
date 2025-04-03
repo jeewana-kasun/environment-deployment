@@ -45,7 +45,7 @@ sudo apt update -y -qq
 sudo apt install docker-ce -y -qq
 
 # Wait for 60 seconds
-sleep 30
+sleep 60
 
 # Start and Enable Docker Service
 sudo systemctl start docker
@@ -62,7 +62,7 @@ echo "[FINISH] Install docker..."
 echo "============================="
 echo "                "
 
-if [ "$backendType" == "d" ]; then
+if [ "$backendType" = "d" ]; then
 
     echo "!|!|!|!|!|!|!|!|!|!|!|!|!|!|!"
     echo "Starting Docker execution with .Net backend project"
@@ -70,7 +70,7 @@ if [ "$backendType" == "d" ]; then
 
     sh src-scripts/
 
-elif [ "$backendType" == "p" ]; then
+elif [ "$backendType" = "p" ]; then
 
     echo "!|!|!|!|!|!|!|!|!|!|!|!|!|!|!"
     echo "Docker execution with is not yet implemented"
