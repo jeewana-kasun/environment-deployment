@@ -60,6 +60,8 @@ else
     sudo systemctl enable docker
 fi
 
+sleep 20
+
 if systemctl is-active --quiet docker; then
     echo "Docker is running"
 else
