@@ -56,6 +56,8 @@ if systemctl is-active --quiet docker; then
     echo "Docker is running"
 else
     # Start and Enable Docker Service
+    sudo systemctl stop docker
+    sleep 10
     sudo systemctl start docker
     sudo systemctl enable docker
 fi
