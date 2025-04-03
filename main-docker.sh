@@ -60,6 +60,8 @@ else
     echo "Starting Docker..."
 fi
 
+systemctl start service.docker
+
 sleep 20
 
 systemctl status docker
@@ -78,7 +80,7 @@ echo "[FINISH] Install docker..."
 echo "============================="
 echo "                "
 
-echo "backendType : $backendType"
+echo "backendType : $1"
 
 if [ "$backendType" = "dotnet" ]; then
 
