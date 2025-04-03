@@ -1,3 +1,7 @@
+
+backendType = $1
+
+
 echo "============================="
 echo "[START] Remove existing docker..."
 echo "============================="
@@ -45,14 +49,18 @@ sudo apt update -y -qq
 sudo apt install docker-ce -y -qq
 
 # Wait for 60 seconds
-sleep 60
+sleep 30
 
 # Start and Enable Docker Service
 sudo systemctl start docker
 sudo systemctl enable docker
 
-# Check Docker service status
-sudo systemctl status docker
+# Check if docker is active and run the rest of the script
+if systemctl is-active --quiet docker; then
+    echo "Docker is running"
+else
+    echo "Docker is not running"
+fi
 
 # Run Docker as a Non-root User (Optional)
 sudo usermod -aG docker $USER
@@ -62,7 +70,6 @@ echo "[FINISH] Install docker..."
 echo "============================="
 echo "                "
 
-echo "backendType : $backendType"
 
 if [ "$backendType" = "d" ]; then
 
