@@ -1,9 +1,9 @@
 #!/bin/bash
+folderPath="../projects/backend"
 
-sudo apt-get install jq -y
-
-# Seeting up parameters
-ochestration=$(jq -r '.automationConfig.ochestration' config.json)
-backendType=$(jq -r '.automationConfig.backendType' config.json)
-
-sh sample.sh $backendType
+# Check if .csproj or .sln files exist
+if ls $folderPath/*.csproj $folderPath/*.sln 1> /dev/null 2>&1; then
+    echo "This folder contains a .NET project."
+else
+    echo "No .NET project found."
+fi
