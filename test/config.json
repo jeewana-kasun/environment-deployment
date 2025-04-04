@@ -1,0 +1,6 @@
+{
+    "automationConfig": {
+        "ochestration": "docker",
+        "backendType":"dotnet"
+    }
+}
