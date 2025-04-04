@@ -4,7 +4,7 @@ volumes:
 services:
  db:
   build:
-   context: ../../../src-projects/database/
+   context: ../../src-projects/database/
    dockerfile: Dockerfile
   volumes:
     - datafiles:/var/lib/mysql
@@ -13,7 +13,7 @@ services:
     MYSQL_ROOT_PASSWORD: 1234
  mvc:
   build:
-   context: ../src-projects/backend
+   context: ../../src-projects/backend
    dockerfile: Dockerfile
   depends_on:
    - db
