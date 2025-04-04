@@ -3,7 +3,7 @@ backendType = $1
 
 
 echo "============================="
-echo "[START] Remove existing docker..."
+echo "Remove existing docker..."
 echo "============================="
 
 # Stop docker service
@@ -20,14 +20,10 @@ sudo apt autoremove -y -qq
 
 # Delete docker configuration files
 sudo rm -rf /var/lib/docker
-
-echo "============================="
-echo "[FINISH] Remove existing docker..."
-echo "============================="
 echo "                "
 
 echo "============================="
-echo "[START] Install docker..."
+echo "Install docker..."
 echo "============================="
 
 # Update the Package Index
@@ -62,27 +58,23 @@ fi
 
 # Run Docker as a Non-root User (Optional)
 sudo usermod -aG docker $USER
-
-echo "============================="
-echo "[FINISH] Install docker..."
-echo "============================="
 echo "                "
 
 echo "backendType : $1"
 
 if [ "$1" = "dotnet" ]; then
 
-    echo "!|!|!|!|!|!|!|!|!|!|!|!|!|!|!"
+    echo "============================="
     echo "Starting Docker execution with .Net backend project"
-    echo "!|!|!|!|!|!|!|!|!|!|!|!|!|!|!"
+    echo "============================="
 
     sh src-scripts/dotnet/dotnet.sh
 
 elif [ "$backendType" = "python" ]; then
 
-    echo "!|!|!|!|!|!|!|!|!|!|!|!|!|!|!"
+    echo "============================="
     echo "Docker execution with is not yet implemented"
-    echo "!|!|!|!|!|!|!|!|!|!|!|!|!|!|!"
+    echo "============================="
 
 else
     echo "It's not a valid option... Bye Bye !!!"

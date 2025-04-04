@@ -1,5 +1,5 @@
 echo "============================="
-echo "[START] Remove existing .Net packages..."
+echo "Remove existing .Net packages..."
 echo "============================="
 echo "                "
 
@@ -8,14 +8,10 @@ sudo apt-get remove --purge dotnet* -y -qq
 
 # Clean up unnecessary dependencies
 sudo apt-get autoremove -y -qq
-
-echo "============================="
-echo "[FINISH] Remove existing .Net packages..."
-echo "============================="
 echo "                "
 
 echo "============================="
-echo "[START] Installing .Net..."
+echo "Installing .Net..."
 echo "============================="
 echo "                "
 
@@ -35,10 +31,9 @@ sudo apt-get install dotnet-runtime-6.0 -y -qq
 dotnet --version
 
 echo "============================="
-echo "[FINISH] Installing .Net..."
+echo "Starting Docker compose..."
 echo "============================="
 echo "                "
 
 cd src-scripts/docker/
-
-docker compose up --build
+docker compose up --build -d
