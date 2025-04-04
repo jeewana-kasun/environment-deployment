@@ -39,4 +39,6 @@ echo "[FINISH] Installing .Net..."
 echo "============================="
 echo "                "
 
-docker compose -f src-scripts/docker/docker-compose.yaml up --build
+cd src-scripts/docker/
+
+docker compose up --build
