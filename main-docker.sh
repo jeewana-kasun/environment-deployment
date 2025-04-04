@@ -82,7 +82,7 @@ echo "                "
 
 echo "backendType : $1"
 
-if [ "$backendType" = "dotnet" ]; then
+if [ "$1" = "dotnet" ]; then
 
     echo "!|!|!|!|!|!|!|!|!|!|!|!|!|!|!"
     echo "Starting Docker execution with .Net backend project"
