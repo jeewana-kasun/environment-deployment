@@ -60,7 +60,7 @@ else
     echo "Starting Docker..."
 fi
 
-systemctl start service.docker
+systemctl start docker
 
 sleep 20
 
