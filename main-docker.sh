@@ -60,18 +60,6 @@ else
     echo "Starting Docker..."
 fi
 
-sudo systemctl start docker
-
-sleep 20
-
-sudo systemctl status docker
-
-# if systemctl is-active --quiet docker; then
-#     echo "Docker is running"
-# else
-#     echo "Docker is not running"
-# fi
-
 # Run Docker as a Non-root User (Optional)
 sudo usermod -aG docker $USER
 
