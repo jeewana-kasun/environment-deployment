@@ -37,3 +37,6 @@ echo "                "
 
 cd src-scripts/docker/
 docker compose up --build -d
+
+docker image ls
+docker ps
