@@ -1,5 +1,5 @@
 
-backendType = $1
+backendType=$1
 
 
 echo "============================="
@@ -62,7 +62,7 @@ echo "                "
 
 echo "backendType : $1"
 
-if [ "$1" = "dotnet" ]; then
+if [ "$backendType" = "dotnet" ]; then
 
     echo "============================="
     echo "Starting Docker execution with .Net backend project"
