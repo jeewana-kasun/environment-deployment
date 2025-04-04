@@ -35,7 +35,7 @@ echo "Starting Docker compose..."
 echo "============================="
 echo "                "
 
-cd src-scripts/docker/
+cd scripts/orchestration/
 docker compose up --build -d
 
 docker image ls

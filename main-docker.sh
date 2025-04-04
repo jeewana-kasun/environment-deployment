@@ -68,7 +68,7 @@ if [ "$backendType" = "dotnet" ]; then
     echo "Starting Docker execution with .Net backend project"
     echo "============================="
 
-    sh src-scripts/dotnet/dotnet.sh
+    sh scripts/backendScripts/dotnet.sh
 
 elif [ "$backendType" = "python" ]; then
 
