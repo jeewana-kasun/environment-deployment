@@ -60,11 +60,11 @@ else
     echo "Starting Docker..."
 fi
 
-systemctl start docker
+sudo systemctl start docker
 
 sleep 20
 
-systemctl status docker
+sudo systemctl status docker
 
 # if systemctl is-active --quiet docker; then
 #     echo "Docker is running"
