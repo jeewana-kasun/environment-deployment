@@ -75,7 +75,7 @@ if [ $backendType = "dotnet" ] && [ $projectTypeInBackendFolder = "dotnetProject
     cd ../$deploymentRepoName/
     sh scripts/backendScripts/dotnet.sh
 
-elif [ "$backendType" = "python" ] && [ $projectTypeInBackendFolder = "PythonProject" ]; then
+elif [ "$backendType" = "python" ] && [ $projectTypeInBackendFolder = "pythonProject" ]; then
 
     echo "============================="
     echo "Docker execution with Python is not yet implemented"
