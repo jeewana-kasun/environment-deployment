@@ -2,21 +2,24 @@ volumes:
  datafiles:
 
 services:
- db:
+ myslqdb:
   build:
    context: ../../projects/database/
    dockerfile: Dockerfile
   volumes:
     - datafiles:/var/lib/mysql
+  ports:
+      - "3306:3306"
   restart: always
   environment:
     MYSQL_ROOT_PASSWORD: 1234
- mvc:
+
+ backend:
   build:
    context: ../../projects/backend
    dockerfile: Dockerfile
   depends_on:
-   - db
+   - myslqdb
   ports:
    - "8888:80"
   restart: always
