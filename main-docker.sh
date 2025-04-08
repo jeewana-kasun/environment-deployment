@@ -63,6 +63,9 @@ echo "                "
 
 pwd
 
+echo $backendType
+echo $projectTypeInBackendFolder
+
 if [ $backendType = "dotnet" ] && [ $projectTypeInBackendFolder = "dotnetProject" ]; then
 
     echo "============================="
