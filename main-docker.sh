@@ -61,6 +61,8 @@ fi
 sudo usermod -aG docker $USER
 echo "                "
 
+pwd
+
 if [ $backendType = "dotnet" ] && [ $projectTypeInBackendFolder = "dotnetProject" ]; then
 
     echo "============================="
