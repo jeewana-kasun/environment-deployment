@@ -1,34 +1,31 @@
 echo "============================="
-echo "Remove existing .Net packages..."
+echo "Remove existing python packages..."
 echo "============================="
 echo "                "
 
-# Remove any .NET packages
-sudo apt-get remove --purge dotnet* -y -qq
+# Remove any python packages
+sudo apt-get remove --purge 'python3-*' -y -qq
 
 # Clean up unnecessary dependencies
 sudo apt-get autoremove -y -qq
 echo "                "
 
 echo "============================="
-echo "Installing .Net..."
+echo "Installing Python..."
 echo "============================="
 echo "                "
-
-# Install the Microsoft package signing key and repository
-wget https://packages.microsoft.com/keys/microsoft.asc
-sudo apt-key add microsoft.asc
-sudo add-apt-repository "$(wget -qO- https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/prod.list)"
 
 # Update the package list
 sudo apt-get update -y -qq
 
-# Install .NET SDK or Runtime
-sudo apt-get install dotnet-sdk-6.0 -y -qq
-sudo apt-get install dotnet-runtime-6.0 -y -qq
+# Install Python (Python 3)
+sudo apt install python3
+
+# Install pip for Python 3
+sudo apt install python3-pip
 
 # Verify the Installation
-dotnet --version
+python3 --version
 
 echo "============================="
 echo "Starting Docker compose..."
