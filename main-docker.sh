@@ -61,7 +61,7 @@ fi
 sudo usermod -aG docker $USER
 echo "                "
 
-if [ $backendType = "dotnet" && $projectTypeInBackendFolder = "dotnetProject"]; then
+if [ $backendType = "dotnet" ] && [ $projectTypeInBackendFolder = "dotnetProject" ]; then
 
     echo "============================="
     echo "Starting Docker execution with .Net backend project"
@@ -69,7 +69,7 @@ if [ $backendType = "dotnet" && $projectTypeInBackendFolder = "dotnetProject"]; 
 
     sh scripts/backendScripts/dotnet.sh
 
-elif [ "$backendType" = "python" && $projectTypeInBackendFolder = "PythonProject"]; then
+elif [ "$backendType" = "python" ] && [ $projectTypeInBackendFolder = "PythonProject" ]; then
 
     echo "============================="
     echo "Docker execution with Python is not yet implemented"
