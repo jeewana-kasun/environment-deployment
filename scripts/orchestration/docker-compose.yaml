@@ -6,13 +6,15 @@ services:
   build:
    context: ../../projects/database/
    dockerfile: Dockerfile
+  container_name: mysqldb
   volumes:
     - datafiles:/var/lib/mysql
   ports:
-      - "3306:3306"
+    - "3306:3306"
   restart: always
   environment:
-    MYSQL_ROOT_PASSWORD: 1234
+    MYSQL_ROOT_PASSWORD: root_password
+    MYSQL_DATABASE: my_database
 
  backend:
   build:
