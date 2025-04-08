@@ -35,7 +35,6 @@ echo "Starting Docker compose..."
 echo "============================="
 echo "                "
 
-pwd
 cd scripts/orchestration/
 docker compose up --build -d
 

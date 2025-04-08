@@ -69,7 +69,9 @@ if [ $backendType = "dotnet" ] && [ $projectTypeInBackendFolder = "dotnetProject
     echo "Starting Docker execution with .Net backend project"
     echo "============================="
 
-    sh ../$deploymentRepoName/scripts/backendScripts/dotnet.sh
+    cd ../$deploymentRepoName/
+
+    sh scripts/backendScripts/dotnet.sh
 
 elif [ "$backendType" = "python" ] && [ $projectTypeInBackendFolder = "PythonProject" ]; then
 
