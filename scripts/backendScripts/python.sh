@@ -19,10 +19,10 @@ echo "                "
 sudo apt-get update -y -qq
 
 # Install Python (Python 3)
-sudo apt install python3
+sudo apt install python3 -y -qq
 
 # Install pip for Python 3
-sudo apt install python3-pip
+sudo apt install python3-pip -y -qq
 
 # Verify the Installation
 python3 --version
