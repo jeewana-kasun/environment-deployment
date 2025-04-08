@@ -1,7 +1,7 @@
 
 backendType=$1
 projectTypeInBackendFolder=$2
-
+deploymentRepoName=$3
 
 echo "============================="
 echo "Remove existing docker..."
@@ -69,7 +69,7 @@ if [ $backendType = "dotnet" ] && [ $projectTypeInBackendFolder = "dotnetProject
     echo "Starting Docker execution with .Net backend project"
     echo "============================="
 
-    sh scripts/backendScripts/dotnet.sh
+    sh ../$deploymentRepoName/scripts/backendScripts/dotnet.sh
 
 elif [ "$backendType" = "python" ] && [ $projectTypeInBackendFolder = "PythonProject" ]; then
 
