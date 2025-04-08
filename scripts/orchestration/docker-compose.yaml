@@ -21,7 +21,7 @@ services:
    context: ../../projects/backend
    dockerfile: Dockerfile
   volumes:
-   - ./app:/app
+   - datafiles:/app
   depends_on:
    - myslqdb
   ports:
