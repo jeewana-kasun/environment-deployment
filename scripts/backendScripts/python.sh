@@ -32,9 +32,8 @@ echo "Starting Docker compose..."
 echo "============================="
 echo "                "
 
-pwd
 cd scripts/orchestration/
-sh docker-compose-python.sh
+sh python-dCompose-up
 
 docker image ls
 docker ps
