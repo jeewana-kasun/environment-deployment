@@ -4,6 +4,7 @@
 backendType=$1
 projectTypeInBackendFolder=$2
 deploymentRepoName=$3
+ochestration=$4
 
 echo "============================="
 echo "Remove existing docker..."
