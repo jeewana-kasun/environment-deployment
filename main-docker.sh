@@ -75,7 +75,7 @@ if [ $backendType = "dotnet" ] && [ $projectTypeInBackendFolder = "dotnetProject
     echo "============================="
 
     cd ../$deploymentRepoName/
-    sh scripts/backendScripts/dotnet.sh
+    sh scripts/backendScripts/dotnet.sh $backendType $ochestration
 
 elif [ "$backendType" = "python" ] && [ $projectTypeInBackendFolder = "pythonProject" ]; then
 

@@ -1,7 +1,15 @@
+
 #!/bin/sh/
 
+backendType=$1
+projectTypeInBackendFolder=$2
+deploymentRepoName=$3
+ochestration=$4
+
+#==================================================================
+
 echo "============================="
-echo "[START] Remove existing docker..."
+echo "Remove existing docker..."
 echo "============================="
 
 # Stop docker service
@@ -18,14 +26,12 @@ sudo apt autoremove -y -qq
 
 # Delete docker configuration files
 sudo rm -rf /var/lib/docker
-
-echo "============================="
-echo "[FINISH] Remove existing docker..."
-echo "============================="
 echo "                "
 
+#==================================================================
+
 echo "============================="
-echo "[START] Install docker..."
+echo "Install docker..."
 echo "============================="
 
 # Update the Package Index
@@ -47,90 +53,44 @@ sudo apt update -y -qq
 sudo apt install docker-ce -y -qq
 
 # Wait for 60 seconds
-sleep 60
+sleep 30
 
-# Start and Enable Docker Service
-sudo systemctl start docker
-sudo systemctl enable docker
-
-# Check Docker service status
-sudo systemctl status docker
+# Check if docker is active and run the rest of the script
+if systemctl is-active --quiet docker; then
+    echo "Docker is running"
+else
+    # Start and Enable Docker Service
+    sudo systemctl start docker
+    echo "Starting Docker..."
+fi
 
 # Run Docker as a Non-root User (Optional)
 sudo usermod -aG docker $USER
-
-echo "============================="
-echo "[FINISH] Install docker..."
-echo "============================="
 echo "                "
 
-echo "============================="
-echo "[START] Remove existing .Net packages..."
-echo "============================="
-echo "                "
+#==================================================================
 
-# Remove any .NET packages
-sudo apt-get remove --purge dotnet* -y -qq
+echo $backendType
+echo $projectTypeInBackendFolder
 
-# Clean up unnecessary dependencies
-sudo apt-get autoremove -y -qq
+if [ $backendType = "dotnet" ] && [ $projectTypeInBackendFolder = "dotnetProject" ]; then
 
-echo "============================="
-echo "[FINISH] Remove existing .Net packages..."
-echo "============================="
-echo "                "
+    echo "============================="
+    echo "Starting Docker execution with .Net backend project"
+    echo "============================="
 
-echo "============================="
-echo "[START] Installing .Net..."
-echo "============================="
-echo "                "
+    cd ../$deploymentRepoName/
+    sh scripts/backendScripts/dotnet.sh $ochestration
 
-# Install the Microsoft package signing key and repository
-wget https://packages.microsoft.com/keys/microsoft.asc
-sudo apt-key add microsoft.asc
-sudo add-apt-repository "$(wget -qO- https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/prod.list)"
+elif [ "$backendType" = "python" ] && [ $projectTypeInBackendFolder = "pythonProject" ]; then
 
-# Update the package list
-sudo apt-get update -y -qq
+    echo "============================="
+    echo "Starting Docker execution with Python backend project"
+    echo "============================="
 
-# Install .NET SDK or Runtime
-sudo apt-get install dotnet-sdk-6.0 -y -qq
-sudo apt-get install dotnet-runtime-6.0 -y -qq
+    cd ../$deploymentRepoName/
+    sh scripts/backendScripts/python.sh
 
-# Verify the Installation
-dotnet --version
-
-echo "============================="
-echo "[FINISH] Installing .Net..."
-echo "============================="
-echo "                "
-
-echo "============================="
-echo "[START] Run Docker Compose..."
-echo "============================="
-
-# Go into new repository script folder
-cd src-scripts
-
-# Run docker compose
-sudo docker compose up -d
-
-# List docker images
-sudo docker image ls
-
-# List docker containers
-sudo docker ps
-
-echo "============================="
-echo "[FINISH] Run Docker Compose..."
-echo "============================="
-echo "                "
-
-# Store the end time
-end_time=$(date +%s)
-
-# Calculate the duration
-duration=$(( end_time - start_time ))
-
-# Print the duration
-echo "Total Execution Time: $duration seconds"
+else
+    echo "It's not a valid option... Bye Bye !!!"
+fi

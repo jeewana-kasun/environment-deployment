@@ -10,6 +10,8 @@ sudo apt-get remove --purge 'python3-*' -y -qq
 sudo apt-get autoremove -y -qq
 echo "                "
 
+#===================================================================================================
+
 echo "============================="
 echo "Installing Python..."
 echo "============================="
@@ -26,6 +28,49 @@ sudo apt install python3-pip -y -qq
 
 # Verify the Installation
 python3 --version
+
+#===================================================================================================
+
+if [ $ochestration = "docker" ]; then
+
+    echo "============================="
+    echo "Starting Docker compose..."
+    echo "============================="
+    echo "                "
+
+    cd scripts/orchestration/
+    docker compose up --build -d
+
+    docker image ls
+    docker ps
+
+elif [ $ochestration = "k8s" ]; then
+
+    sh python-dCompose-down.sh
+
+else
+    echo "It's not a valid backend option... Bye Bye !!!"
+fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 echo "============================="
 echo "Starting Docker compose..."

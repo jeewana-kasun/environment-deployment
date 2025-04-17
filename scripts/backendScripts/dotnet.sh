@@ -1,3 +1,5 @@
+backendType=$1
+
 echo "============================="
 echo "Remove existing .Net packages..."
 echo "============================="
@@ -9,6 +11,8 @@ sudo apt-get remove --purge dotnet* -y -qq
 # Clean up unnecessary dependencies
 sudo apt-get autoremove -y -qq
 echo "                "
+
+#===================================================================================================
 
 echo "============================="
 echo "Installing .Net..."
@@ -30,13 +34,25 @@ sudo apt-get install dotnet-runtime-6.0 -y -qq
 # Verify the Installation
 dotnet --version
 
-echo "============================="
-echo "Starting Docker compose..."
-echo "============================="
-echo "                "
+#===================================================================================================
 
-cd scripts/orchestration/
-docker compose up --build -d
+if [ $ochestration = "docker" ]; then
 
-docker image ls
-docker ps
+    echo "============================="
+    echo "Starting Docker compose..."
+    echo "============================="
+    echo "                "
+
+    cd scripts/orchestration/
+    docker compose up --build -d
+
+    docker image ls
+    docker ps
+
+elif [ $ochestration = "k8s" ]; then
+
+    sh python-dCompose-down.sh
+
+else
+    echo "It's not a valid backend option... Bye Bye !!!"
+fi
