@@ -1,4 +1,6 @@
 
+#!/bin/sh/
+
 backendType=$1
 projectTypeInBackendFolder=$2
 deploymentRepoName=$3
