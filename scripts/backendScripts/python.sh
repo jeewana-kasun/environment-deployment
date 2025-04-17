@@ -34,7 +34,7 @@ echo "                "
 
 pwd
 cd scripts/orchestration/
-sh python-dCompose-up
+sh python-dCompose-up.sh
 
 docker image ls
 docker ps
