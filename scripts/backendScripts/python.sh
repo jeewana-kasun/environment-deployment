@@ -33,7 +33,7 @@ echo "============================="
 echo "                "
 
 pwd
-cd ../orchestration/
+cd scripts/orchestration/
 sh docker-compose-python.sh
 
 docker image ls

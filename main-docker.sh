@@ -80,7 +80,7 @@ if [ $backendType = "dotnet" ] && [ $projectTypeInBackendFolder = "dotnetProject
 elif [ "$backendType" = "python" ] && [ $projectTypeInBackendFolder = "pythonProject" ]; then
 
     echo "============================="
-    echo "Docker execution with Python is not yet implemented"
+    echo "Starting Docker execution with Python backend project"
     echo "============================="
 
     cd ../$deploymentRepoName/
