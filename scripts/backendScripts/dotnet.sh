@@ -1,4 +1,5 @@
 backendType=$1
+ochestration=$2
 
 echo "============================="
 echo "Remove existing .Net packages..."
