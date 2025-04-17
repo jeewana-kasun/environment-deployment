@@ -87,5 +87,5 @@ elif [ "$backendType" = "python" ] && [ $projectTypeInBackendFolder = "pythonPro
     sh scripts/backendScripts/python.sh
 
 else
-    echo "It's not a valid option... Bye Bye !!!"
+    echo "It's not a valid project type... Bye Bye !!!"
 fi
