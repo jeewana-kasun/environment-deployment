@@ -5,6 +5,7 @@ backendType=$1
 projectTypeInBackendFolder=$2
 deploymentRepoName=$3
 ochestration=$4
+projectTypeInFrontendFolder=$5
 
 echo "============================="
 echo "Remove existing docker..."
@@ -25,6 +26,8 @@ sudo apt autoremove -y -qq
 # Delete docker configuration files
 sudo rm -rf /var/lib/docker
 echo "                "
+
+#====================================================================
 
 echo "============================="
 echo "Install docker..."
@@ -64,11 +67,9 @@ fi
 sudo usermod -aG docker $USER
 echo "                "
 
-pwd
+#====================================================================
 
-echo $backendType
-echo $projectTypeInBackendFolder
-
+# Docker execution for BackEnd
 if [ $backendType = "dotnet" ] && [ $projectTypeInBackendFolder = "dotnetProject" ]; then
 
     echo "============================="
@@ -86,6 +87,22 @@ elif [ "$backendType" = "python" ] && [ $projectTypeInBackendFolder = "pythonPro
 
     cd ../$deploymentRepoName/
     sh scripts/backendScripts/python.sh
+
+else
+    echo "It's not a valid project type... Bye Bye !!!"
+fi
+
+#====================================================================
+
+# Docker execution for FrontEnd
+if [ $backendType = "angular" ] && [ $projectTypeInFrontendFolder = "dotnetProject" ]; then
+
+    echo "============================="
+    echo "Starting Docker execution with Angular frontend project"
+    echo "============================="
+
+    cd ../$deploymentRepoName/
+    sh scripts/backendScripts/dotnet.sh $frontendType $ochestration
 
 else
     echo "It's not a valid project type... Bye Bye !!!"
