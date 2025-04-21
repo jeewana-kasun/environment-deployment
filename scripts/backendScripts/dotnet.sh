@@ -1,3 +1,5 @@
+#!/bin/sh/
+
 backendType=$1
 ochestration=$2
 
@@ -52,7 +54,7 @@ if [ $ochestration = "docker" ]; then
 
 elif [ $ochestration = "k8s" ]; then
 
-    sh python-dCompose-down.sh
+    echo "K8s deployment not yet implemented..."
 
 else
     echo "It's not a valid backend option... Bye Bye !!!"

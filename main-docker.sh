@@ -95,14 +95,14 @@ fi
 #====================================================================
 
 # Docker execution for FrontEnd
-if [ $backendType = "angular" ] && [ $projectTypeInFrontendFolder = "dotnetProject" ]; then
+if [ $backendType = "angular" ] && [ $projectTypeInFrontendFolder = "angularProject" ]; then
 
     echo "============================="
     echo "Starting Docker execution with Angular frontend project"
     echo "============================="
 
     cd ../$deploymentRepoName/
-    sh scripts/backendScripts/dotnet.sh $frontendType $ochestration
+    sh scripts/frontendScripts/angular.sh $frontendType $ochestration
 
 else
     echo "It's not a valid project type... Bye Bye !!!"

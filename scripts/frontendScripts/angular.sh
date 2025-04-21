@@ -1,33 +1,29 @@
+#!/bin/sh/
+
 echo "============================="
-echo "Remove existing python packages..."
+echo "Remove existing Angular packages..."
 echo "============================="
 echo "                "
 
-# Remove any python packages
-sudo apt-get remove --purge 'python3-*' -y -qq
+# Uninstall Angular CLI (Globally)
+sudo npm uninstall -g @angular/cli
 
-# Clean up unnecessary dependencies
-sudo apt-get autoremove -y -qq
-echo "                "
+# Clean up npm cache
+sudo npm cache clean --force
 
-#===================================================================================================
+#====================================================
 
 echo "============================="
-echo "Installing Python..."
+echo "Installing Angular..."
 echo "============================="
 echo "                "
 
 # Update the package list
-sudo apt-get update -y -qq
+sudo apt update
 
-# Install Python (Python 3)
-sudo apt install python3 -y -qq
-
-# Install pip for Python 3
-sudo apt install python3-pip -y -qq
-
-# Verify the Installation
-python3 --version
+# Install Node.js and npm
+curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+sudo apt install -y nodejs
 
 #===================================================================================================
 
@@ -39,7 +35,7 @@ if [ $ochestration = "docker" ]; then
     echo "                "
 
     cd scripts/orchestration/
-    sh python-dCompose-up.sh
+    docker compose up --build -d
 
     docker image ls
     docker ps
